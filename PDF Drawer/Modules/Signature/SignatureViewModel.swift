@@ -1,50 +1,37 @@
 //
 //  SignatureViewModel.swift
-//  the-line
+//  PDF Drawer
 //
-//  Created by Salah Khaled on 14/02/2024.
+//  Created by Salah Khaled on 20/06/2024.
 //
 
 import Foundation
 
 class SignatureViewModel {
     
-    private var signatureList: [UserSignature] = []
+    private var signatureList: [String] = []
     
-    var didGetSignatureHandler: (() -> Void)?
-    var didFailedSignatureHandler: ((String) -> Void)?
+    var didFillSignatureHandler: (() -> Void)?
     
     func getSignatueCount() -> Int {
         return signatureList.count
     }
     
-    func getSignatureAt(index: Int) -> UserSignature {
+    func getSignatureAt(index: Int) -> String {
         return signatureList[index]
     }
     
 }
 
-// MARK: - API
+// MARK: - Signature
 extension SignatureViewModel {
-    func getUserSignature() {
-        guard let user = UserRepo.shared.local.get() else {
-            didFailedSignatureHandler?("session_expired".l())
-            return
-        }
-        let empNo = user.empNo ?? ""
+    
+    func fillSignature() {
+        signatureList.append("signature1".localize())
+        signatureList.append("signature2".localize())
+        signatureList.append("signature3".localize())
         
-        UserRepo.shared.getUserSignature(empNo: empNo) { [ weak self ] response in
-            guard let self = self else { return }
-            DispatchQueue.main.async {
-                switch response {
-                case .onSuccess(let userSignature):
-                    self.signatureList = userSignature
-                    self.didGetSignatureHandler?()
-                case let .onFailure(error):
-                    self.didFailedSignatureHandler?(error.message ?? "session_expired".l())
-                }
-            }
-        }
+        didFillSignatureHandler?()
     }
 }
 

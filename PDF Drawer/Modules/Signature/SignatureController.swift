@@ -1,8 +1,8 @@
 //
 //  SignatureController.swift
-//  the-line
+//  PDF Drawer
 //
-//  Created by Salah Khaled on 14/02/2024.
+//  Created by Salah Khaled on 20/06/2024.
 //
 
 import UIKit
@@ -16,7 +16,7 @@ class SignatureController: UIViewController {
     
     // MARK: - Properties
     let viewModel = SignatureViewModel()
-    var didPickSignatureHandler: ((_ signature: UserSignature) -> ())?
+    var didPickSignatureHandler: ((_ signature: String) -> ())?
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -38,7 +38,7 @@ class SignatureController: UIViewController {
     }
     
     func setupView() {
-        title = "choose_signature".l()
+        title = "Choose Signature"
         let cancelButton = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(dismissViewController))
         cancelButton.tintColor = .gray
         navigationItem.leftBarButtonItem = cancelButton
@@ -51,20 +51,13 @@ class SignatureController: UIViewController {
     
     // MARK: - Methods
     func setupViewModel() {
-        viewModel.didGetSignatureHandler = {
+        viewModel.didFillSignatureHandler = {
             self.tableView.reloadData()
             self.loadingIndicator.stopAnimating()
             self.loadingIndicator.isHidden = true
         }
         
-        viewModel.didFailedSignatureHandler = { errorMessage in
-            self.dismiss(animated: true)
-            self.showError(message: errorMessage)
-            
-        }
-        viewModel.getUserSignature()
+        viewModel.fillSignature()
     }
-    
-    // MARK: - Action
     
 }

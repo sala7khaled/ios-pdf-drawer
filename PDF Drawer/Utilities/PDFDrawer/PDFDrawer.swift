@@ -188,14 +188,30 @@ extension PDFDrawer {
                                width: newWidth,
                                height: newHeight)
         
-        if percentage == 0.1 && newWidth < 800 { // Zoom in (+)
+        if percentage == 0.1 && newWidth < 600 { // Zoom in (+)
             lastAnnotation.bounds = newBounds
             forceRedraw(annotation: lastAnnotation, onPage: currentPage)
             
-        } else if percentage == -0.1 && newWidth > 100 { // Zoom out (-)
+        } else if percentage == -0.1 && newWidth > 150 { // Zoom out (-)
             
             lastAnnotation.bounds = newBounds
             forceRedraw(annotation: lastAnnotation, onPage: currentPage)
         }
+    }
+    
+    func resizeLastAnnotation(bySize size: CGFloat, on page: PDFPage) {
+        
+        guard let currentPage = currentPage, let lastAnnotation = currentPage.annotations.last else {
+            return
+        }
+        
+        let originalBounds = lastAnnotation.bounds
+        let newBounds = CGRect(x: originalBounds.origin.x,
+                               y: originalBounds.origin.y,
+                               width: size,
+                               height: size)
+        
+        lastAnnotation.bounds = newBounds
+        forceRedraw(annotation: lastAnnotation, onPage: currentPage)
     }
 }

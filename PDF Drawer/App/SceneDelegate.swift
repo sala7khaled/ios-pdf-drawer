@@ -17,7 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         
         window = UIWindow(windowScene: windowScene)
-//        window?.tintColor = .appPrimary
+        window?.tintColor = .appPrimary
         window?.overrideUserInterfaceStyle = .light
         window?.makeKeyAndVisible()
         window?.rootViewController = DocumentController()

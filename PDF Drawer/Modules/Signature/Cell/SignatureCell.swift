@@ -1,8 +1,8 @@
 //
 //  SignatureCell.swift
-//  the-line
+//  PDF Drawer
 //
-//  Created by Salah Khaled on 14/02/2024.
+//  Created by Salah Khaled on 20/06/2024.
 //
 
 import UIKit
@@ -23,9 +23,9 @@ class SignatureCell: UITableViewCell {
         
     }
     
-    func configure(with signature: UserSignature) {
+    func configure(with base64Signature: String) {
         
-        if let image = signature.signatureData?.convertBase64ToImage() {
+        if let image = base64Signature.convertBase64ToImage() {
             imageSignature.image = image
         } else {
             imageSignature.isHidden = true
