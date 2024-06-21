@@ -2,7 +2,7 @@
 
 # PDF Drawer
 
-PDF Drawer is a powerful iOS tool that enables users to draw lines and add Base64-encoded signature annotations on PDF documents. Built using UIKit and PDFKit, this tool is perfect for enhancing PDF documents with custom annotations and signatures.
+PDF Drawer is a powerful iOS project that enables users to draw lines and add Base64-encoded signature annotations on PDF documents. Built using UIKit and PDFKit, this project is perfect for enhancing PDF documents with custom annotations and signatures.
 
 <br>
 <br>
