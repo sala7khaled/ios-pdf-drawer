@@ -11,7 +11,7 @@ PDF Drawer is a powerful iOS project that enables users to draw lines and add Ba
 
 - [x] Draw Lines: Easily draw lines on any PDF document.
 - [x] Signature Annotations: Add Base64-encoded signature annotations.
-- [x] Move Annotations: Move annotations anywhere on the page.
+- [x] Move Annotations: Drag to move annotations anywhere on the page.
 - [x] Resize Annotations: Adjust the size of annotations, making them bigger or smaller.
 - [x] Export PDF: Export the annotated PDF and save it to the device, with the file path printed.
 - [x] UIKit Integration: Seamlessly integrated with UIKit for a smooth user experience.
